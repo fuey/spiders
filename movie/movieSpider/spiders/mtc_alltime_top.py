@@ -55,7 +55,7 @@ class MtcAlltimeTopSpider(scrapy.Spider):
         page_url_pre = "https://www.metacritic.com/browse/movies/score/metascore/all/filtered?sort=desc&page="
 
         # for page_no in range(int(max_page_num)+1):  # 这里+1的目的是为了让所有的链接都循环完毕
-        for page_no in range(int(1)+1):
+        for page_no in range(int(3)+1):  # 由于排名电影太多，暂且只爬取前三页的内容
             if page_no != max_page_num:
                 page_url_list.append(page_url_pre+str(page_no+1))
             yield scrapy.Request(url=page_url_list[page_no],  # 第0个链接（https://www.metacritic.com/browse/movies/score/metascore/all/filtered?sort=desc）开始的，所以上面必须得多循环一次才能跑完所有的链接
